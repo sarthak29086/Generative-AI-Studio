@@ -1,0 +1,52 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh; /* Pehle 100vh tha, ab chhota kiya */
+  width: 60%; /* Width thodi kam ki */
+  max-width: 600px; /* Max limit set ki */
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: white;
+  text-align: center;
+  padding: 15px; /* Thoda padding kam ki */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.home-title {
+  font-size: 28px; /* Font size chhota kiya */
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 6px rgba(201, 34, 34, 0.2);
+}
+
+.home-subtitle {
+  font-size: 18px; /* Subtitle size bhi thoda kam kiya */
+  color: #dcdcdc;
+  margin-bottom: 15px;
+}
+
+.mode-container {
+  background: rgba(50, 11, 157, 0.1);
+  padding: 12px 20px; /* Padding kam ki */
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.mode-text {
+  font-size: 16px; /* Iska bhi size kam kiya */
+  font-weight: 500;
+}
+
+.active-mode {
+  font-weight: bold;
+  color: #812d43;
+  font-size: 20px; /* Active mode ka size bhi adjust kiya */
+  transition: all 0.3s ease-in-out;
+}
+
+.home-container:hover {
+  transform: scale(1.01);
+}

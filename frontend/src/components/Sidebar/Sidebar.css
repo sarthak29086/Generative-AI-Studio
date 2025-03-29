@@ -1,0 +1,179 @@
+/* Updated Sidebar Styles with Unique History Compression */
+
+/**************************************************************
+ * SIDEBAR CONTAINER
+ **************************************************************/
+ .sidebar {
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(135deg, #2c2f33, #23272a);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  transition: width 0.3s ease-in-out, min-width 0.3s ease-in-out;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  padding-left: 0;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+  min-width: 80px;
+}
+
+/**************************************************************
+ * TOGGLE BUTTON
+ **************************************************************/
+.toggle-btn {
+  align-self: flex-end;
+  margin: 10px;
+  padding: 6px 10px;
+  background: #7289da;
+  color: #fff;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-size: 14px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.toggle-btn:hover {
+  background: #5b6eaa;
+  transform: scale(1.05);
+}
+
+.sidebar.collapsed .toggle-btn {
+  margin-right: 10px;
+}
+
+/**************************************************************
+ * SIDEBAR TITLE
+ **************************************************************/
+.sidebar-title {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .sidebar-title {
+  opacity: 0;
+}
+
+/**************************************************************
+ * HISTORY CONTAINER
+ **************************************************************/
+.history-container {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.collapsed .history-container {
+  padding: 5px;
+  background: rgba(44, 47, 51, 0.9);
+  overflow: hidden;
+}
+
+/**************************************************************
+ * NO HISTORY MESSAGE
+ **************************************************************/
+.no-history {
+  color: #99aab5;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/**************************************************************
+ * HISTORY LIST
+ **************************************************************/
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/**************************************************************
+ * HISTORY ITEM
+ **************************************************************/
+.history-item {
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-size: 14px;
+  color: #fff;
+  text-align: left;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.history-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.02);
+}
+
+.history-item.active {
+  background: #7289da;
+  color: #fff;
+  font-weight: bold;
+  transform: scale(1.03);
+}
+
+/**************************************************************
+ * CUSTOM SCROLLBAR (WEBKIT)
+ **************************************************************/
+.history-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/**************************************************************
+ * RESPONSIVE DESIGN
+ **************************************************************/
+@media (max-width: 992px) {
+  .sidebar { width: 240px; }
+  .sidebar.collapsed { width: 70px; }
+}
+
+@media (max-width: 768px) {
+  .sidebar { width: 200px; }
+  .sidebar.collapsed { width: 60px; }
+  .toggle-btn { font-size: 12px; padding: 4px 8px; }
+  .sidebar-title { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .sidebar { width: 180px; }
+  .sidebar.collapsed { width: 50px; }
+  .sidebar-title { font-size: 16px; }
+  .history-item { font-size: 13px; }
+}
+
+@media (max-width: 360px) {
+  .sidebar { width: 160px; }
+  .sidebar.collapsed { width: 45px; }
+  .toggle-btn { font-size: 10px; }
+  .sidebar-title { font-size: 14px; }
+  .history-item { font-size: 12px; padding: 8px 10px; }
+}

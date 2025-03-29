@@ -1,38 +1,289 @@
-.App {
+/**************************************************************
+ * 1. GLOBAL STYLES
+ **************************************************************/
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  /* Smooth font rendering on some devices */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**************************************************************
+ * 2. MAIN APP LAYOUT
+ **************************************************************/
+/* 
+  The .app-container is the parent that holds 
+  the sidebar and main content side by side.
+*/
+.app-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+/**************************************************************
+ * 3. SIDEBAR LAYOUT
+ **************************************************************/
+/*
+  We'll give the sidebar:
+    - A fixed width
+    - A dark gradient background for a modern look
+    - A box shadow for depth
+    - A transition for smooth resizing (if needed)
+    - A custom scrollbar for style
+*/
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  /* Modern gradient background */
+  background: linear-gradient(135deg, #2c2f33, #23272a);
+  color: white;
+  padding: 20px;
+
+  /* Keep the sidebar fixed on the left */
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  /* Scroll if content is tall */
+  overflow-y: auto;
+
+  /* Smooth transitions if we ever change width, etc. */
+  transition: all 0.3s ease-in-out;
+
+  /* Box shadow for depth */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Example Title Inside Sidebar (If You Need One) */
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
   text-align: center;
+  color: #00d9ff; /* Eye-catching accent color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+  transition: color 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/**************************************************************
+ * 3.1 SIDEBAR LIST
+ **************************************************************/
+/*
+  We can style the list of items in the sidebar (e.g., history or nav).
+*/
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* 
+  Each list item with a subtle hover effect, 
+  scaling up to show it's clickable.
+*/
+.sidebar ul li {
+  padding: 12px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.3s, transform 0.2s;
+  font-size: 14px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* On hover, lighten background & slightly scale up */
+.sidebar ul li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* Active or selected item (optional) */
+.sidebar ul li.active {
+  background-color: #7289da;
+  transform: scale(1.02);
+  color: #fff;
+  font-weight: bold;
+}
+
+/**************************************************************
+ * 3.2 SIDEBAR CUSTOM SCROLLBAR
+ **************************************************************/
+/* Custom scrollbar for WebKit-based browsers */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/**************************************************************
+ * 4. MAIN CONTENT
+ **************************************************************/
+/*
+  .main-content is the area to the right of the sidebar.
+  We push it right by the sidebar's width (250px).
+*/
+.main-content {
+  margin-left: 250px;
+  flex-grow: 1;
+  padding: 20px;
+
+  /* 
+    We'll use flex layout to center or arrange items 
+    in your main content if desired.
+  */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/**************************************************************
+ * 5. HEADER
+ **************************************************************/
+/*
+  The .header at the top of the main content, 
+  with a bright accent color and a drop shadow.
+*/
+.header {
+  background-color: #007bff;
   color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 22px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  /* 
+    If you have content below the header, 
+    consider margin-bottom or other spacing.
+  */
 }
 
-.App-link {
-  color: #61dafb;
+/**************************************************************
+ * 6. HOME & LOGIN PAGE STYLES
+ **************************************************************/
+/*
+  We assume .home-container and .login-container are pages 
+  that display inside main-content or something similar.
+*/
+.home-container,
+.login-container {
+  text-align: center;
+  padding: 50px;
+  max-width: 800px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Page Title */
+.home-container h1,
+.login-container h1 {
+  color: #333;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+/* Page Paragraphs */
+.home-container p,
+.login-container p {
+  font-size: 18px;
+  color: #666;
+}
+
+/**************************************************************
+ * 7. BUTTONS
+ **************************************************************/
+/*
+  A reusable .button class for CTA or generic buttons.
+*/
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s, transform 0.2s;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/**************************************************************
+ * 8. RESPONSIVE DESIGN
+ **************************************************************/
+/*
+  We'll add breakpoints for smaller screens. 
+  If you need more, just add them similarly.
+*/
+
+/* 8.1 Medium Screens (<= 768px) */
+@media (max-width: 768px) {
+  /* Shrink sidebar to 200px */
+  .sidebar {
+    width: 200px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    margin-left: 200px;
+  }
+
+  /* Adjust header font-size slightly */
+  .header {
+    font-size: 20px;
   }
 }
+
+/* 8.2 Small Screens (<= 480px) */
+@media (max-width: 480px) {
+  /* Shrink sidebar further to 100px */
+  .sidebar {
+    width: 100px;
+    padding: 10px;
+  }
+
+  .sidebar h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .sidebar ul li {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .main-content {
+    margin-left: 100px;
+  }
+
+  /* Header a bit smaller */
+  .header {
+    font-size: 18px;
+  }
+
+  /* Page containers can be narrower, smaller text */
+  .home-container,
+  .login-container {
+    padding: 30px;
+  }
+}
+
+/**************************************************************
+ * END OF YOUR UPDATED CSS
+ **************************************************************/
